@@ -21,7 +21,7 @@ Information needed:
 - Sleep interval in seconds: 60 for testing, 600 for normal service
 - ThingSpeak channel ID (a numerical value)
 - ThingSpeak API Write Key (alphanumeric between quotes)
-- OPTIONAL
+- OPTIONAL (Values determined from running D1M-WX1_Calibration.ino
 - - DMM voltage
 - - ADC reading
 
