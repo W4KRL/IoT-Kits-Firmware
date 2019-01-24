@@ -1,4 +1,4 @@
-// config.h for D1M-WX1_IoT-APRS_Franklin42.ino
+// ThingSpeak_config.h
 
 // This configuration file should reside in the same Arduino
 // directory as the weather station file D1M-WX1_IoT-APRS_FranklinV3.ino.
