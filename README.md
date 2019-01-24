@@ -3,10 +3,10 @@ This is a set of firmware sketches for the **IoT KitsÂ©** solar-powered, wirel
 
 There are five sketches:
 - **D1M-WX1_Calibration** - Calibrates the analog-to-digital converter
-- **D1M-WX1_IoT_REST** - ThingSpeak
-- **D1M-WX1_APRS_REST** - ThingSpeak and APRS
-- **D1M-WX1_IoT_MQTT** - ThingSpeak
--**D1M-WX1_APRS_MQTT** - APRS
+- **D1M-WX1_IoT_REST** - Posts data to ThingSpeak using the REST API
+- **D1M-WX1_APRS_REST** - Posts data to ThingSpeak using the REST and to APRS
+- **D1M-WX1_IoT_MQTT** - Posts data to ThingSpeak using MQTT
+- **D1M-WX1_APRS_MQTT** - Posts data ti ThingSpeak using MQTT and to APRS
 
 This version posts weather data and telemetry to [ThingSpeak](http://www.thingspeak.com) using the REST API. Firmware that adds APRS connectivity is D1M-WX1_APRS_REST. 
 ## Installation
