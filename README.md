@@ -34,7 +34,7 @@ Only sketches using APRS need an APRS_config.h file.
 Information needed:
 - latitude (decimal degrees, positive for north, negative for south)
 - longitude (decimal degrees, positive for east, negative for west)
-- callsign and SSID
+- CALLSIGN-SSID
 - APRS passcode
 
 Save the file.
