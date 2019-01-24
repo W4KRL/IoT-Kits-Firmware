@@ -1,4 +1,4 @@
-/* D1M-WX1_IoT_REST.ino
+﻿/* D1M-WX1_IoT_REST.ino
 
    D1 Mini Weather Station (Solar)
    Posts to ThingSpeak using the REST API
@@ -76,7 +76,7 @@
 #include "src/BH1750/BH1750.h"       // https://github.com/claws/BH1750
 
 // Place your configuration file in same folder as this sketch
-#include "ThingSpeakConfig.h"
+#include "ThingSpeak_config.h"
 
 // *******************************************************
 // ********************** DEFAULTS ***********************
