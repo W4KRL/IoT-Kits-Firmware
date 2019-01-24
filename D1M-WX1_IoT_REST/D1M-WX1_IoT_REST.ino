@@ -76,8 +76,7 @@
 #include "src/BH1750/BH1750.h"       // https://github.com/claws/BH1750
 
 // Place your configuration file in same folder as this sketch
-//#include "ThingSpeakConfig.h"
-#include "TS190041.h"
+#include "ThingSpeakConfig.h"
 
 // *******************************************************
 // ********************** DEFAULTS ***********************
