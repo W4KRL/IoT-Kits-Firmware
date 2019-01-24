@@ -1,8 +1,11 @@
 // D1S-IoT-Remote-Display.ino
-// 09/14/2018 Mod to D1S-APRS-Remote-Display
+
+// 01/24/2019 - Moved to GitHub
+// 09/14/2018 - Mod to D1S-APRS-Remote-Display
+
 
 /*_____________________________________________________________________________
-   Copyright(c) 2018 Berger Engineering dba IoT Kits
+   Copyright(c) 2018-2019 Berger Engineering dba IoT Kits
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -25,19 +28,6 @@
 */
 
 // *******************************************************
-// ******* Set true to erase config data *****************
-// *******************************************************
-// Use only if all else fails.
-// If your device is confused or constantly rebooting:
-// Set RESET_WIFI = true;
-// Upload the firmware:
-//    - DO NOT DO ANYTHING ELSE
-//    - DO NOT CONFIGURE YOUR DEVICE
-// After it has run once, change RESET_WFI = true; and reload.
-// Now you can do the normal configuration process.
-const boolean RESET_WIFI = false; // erases WiFI & APRS config for testing
-
-// *******************************************************
 // ******************* INCLUDES **************************
 // *******************************************************
 // For general sketch
@@ -45,11 +35,6 @@ const boolean RESET_WIFI = false; // erases WiFI & APRS config for testing
 #include <Ticker.h>               // [builtin] simple task scheduler
 #include "ThingSpeak.h"
 
-// for WiFiManager library
-#include <FS.h>                   // [builtin] SPIFFS File System
-#include <DNSServer.h>            // [builtin] For webserver
-#include <ESP8266WebServer.h>     // [builtin] For webserver
-#include <WiFiManager.h>          // [manager] https://github.com/tzapu/WiFiManager
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // use ArduinoJson version 5.x.x Do not upgrade to version 6 due at end of 2018
 // code was tested with version 5.13.2
@@ -194,16 +179,6 @@ const int MAGENTA =  0xF81F;
 const int ORANGERED = 0xFA20;  // my choice for RED
 
 // *******************************************************
-// *************** WIFIMANAGER ***************************
-// *******************************************************
-
-// declaring it here makes it global using more space
-// WiFiManager wifiManager;
-// flag for saving config data
-// WiFiManager will decide if save is needed
-bool shouldSaveConfig = false;
-
-// *******************************************************
 // ******************** SETUP ****************************
 // *******************************************************
 void setup() {
@@ -216,93 +191,6 @@ void setup() {
   Serial.println("IoT Kits splash");
   splashScreen();   // stays on until logon is complete
   delay (2000);     // give user time to press reset
-  if ( digitalRead(buttonPin) == LOW ) {
-    configRequest = true;
-  }
-
-  // erase FS config data - used for testing
-  if ( RESET_WIFI ) SPIFFS.format();
-
-  // read configuration from FS json
-  Serial.println("Open File System");
-  openSPIFFS();
-
-  flasher.attach(0.5, flashLED);  // start slow flash
-
-  // starting wifiManager here uses less memory
-  WiFiManager wifiManager;
-
-  // set callbacks
-  wifiManager.setAPCallback(configModeCallback);
-  wifiManager.setSaveConfigCallback(saveConfigCallback);
-
-  // ************************
-  // add user parameters to config web page
-  // ************************
-  wifiManager.setCustomHeadElement("<h1 style=\"color:blue;\">IoT Kits</h1>");
-  WiFiManagerParameter custom_text_ts("<b>Enter ThingSpeak info:</b>");
-  WiFiManagerParameter custom_ts_channel_id("Channel ID", "Channel ID", ts_channel_id, 10);
-  WiFiManagerParameter custom_ts_read_key("Read key", "Read Key", ts_read_key, 20);
-  WiFiManagerParameter custom_text_tz("<b>Enter time zone:</b>");
-  WiFiManagerParameter custom_timezone("Time Zone", "Time Zone (ET)", timezone, 6);
-
-  wifiManager.addParameter(&custom_text_ts);
-  wifiManager.addParameter(&custom_ts_channel_id);
-  wifiManager.addParameter(&custom_ts_read_key);
-  wifiManager.addParameter(&custom_text_tz);
-  wifiManager.addParameter(&custom_timezone);
-
-  // reset settings - used for testing
-  if ( RESET_WIFI ) wifiManager.resetSettings();
-
-  // forces exit if config takes longer than timeout
-  wifiManager.setTimeout(120);        // in seconds
-
-  if ( configRequest == true ) {
-    Serial.println("User requested config");
-    wifiManager.startConfigPortal(AP_PORTAL_NAME);
-  } else {
-    Serial.println("Attempt WiFi connection using saved config");
-    wifiManager.autoConnect(AP_PORTAL_NAME);
-  }
-
-  if ( WiFi.status() != WL_CONNECTED ) {
-    Serial.println("Failed to connect within timeout");
-    tft.fillScreen(BLACK);            // clear screen
-    tft.setCursor(0, 0);
-    tft.setTextSize(2);
-    tft.setTextColor(RED);
-    tft.println("Failed to connect");
-    tft.print("Resetting");
-    delay(5000);
-    ESP.reset();
-  }
-
-  // Wi-Fi is connected
-  Serial.println("Connected OK");
-  flasher.detach();  // stop flasher
-
-  // copy user's config responses
-  strcpy(ts_channel_id, custom_ts_channel_id.getValue());
-  strcpy(ts_read_key, custom_ts_read_key.getValue());
-  strcpy(timezone, custom_timezone.getValue());
-
-  // convert time zone abbreviation to uppercase
-  for (int i = 0; i < strlen(timezone); i++) {
-    timezone[i] = toupper(timezone[i]);
-  }
-
-  // APRS calls must have trailing spaces removed
-//  aprsMyCall = aprs_my_call;
-//  aprsMyCall.trim();
-//  aprsTheirCall = aprs_their_call;
-//  aprsTheirCall.trim();
-
-  // save the custom parameters to File System
-  if ( shouldSaveConfig ) {
-    Serial.println("Save new config");
-    saveConfig();
-  }
 
   // ************************
   // proceed with unit's main purpose in life
@@ -338,7 +226,9 @@ void setup() {
 // *******************************************************
 void loop() {
   // continually check APRS server for incoming data
-  String APRSrcvd = APRSreceiveData();
+
+  //TODO: fix data read
+  String APRSrcvd = "";  //APRSreceiveData();
 
   // ignore comments and short strings (10 is arbitrary)
   if ( APRSrcvd[0] != APRS_ID_COMMENT && APRSrcvd.length() > 10 ) {
@@ -438,28 +328,6 @@ void splashScreen() {
     tft.drawRoundRect(12 - 3 * i, 12 - 3 * i, screenW - 12, screenH - 12, 8, YELLOW);
   }
 } // splashScreen()
-
-// *******************************************************
-// *************** INSTRUCTION SCREEN ********************
-// *******************************************************
-void displayInstructionScreen() {
-  tft.fillScreen(YELLOW);
-  tft.setTextSize(2);
-  tft.setTextColor(BLUE);
-  int topLine = 19;
-  displayCenter( "Connect", screenW2, topLine, 2 );
-  tft.setTextSize(1);
-  displayCenter( "IoT Kits", screenW2, topLine + 20, 1 );
-  tft.setTextSize(2);
-  displayCenter( "Browse", screenW2, topLine + 40, 2 );
-  tft.setTextSize(1);
-  displayCenter( "192.168.4.1", screenW2, topLine + 60, 1 );
-  tft.setTextSize(2);
-  displayCenter( "Fill form", screenW2, topLine + 80, 2 );
-  for (int i = 0; i < 2; i++) {
-    tft.drawRoundRect(6 - 3 * i, 6 - 3 * i, screenW - 12, screenH - 12, 8, BLUE);
-  }
-} // displayInstructionScreen()
 
 // *******************************************************
 // *************** DISPLAY FRAMES ************************
@@ -802,84 +670,6 @@ void displayCenter( String text, int column, int line, int size ) {
   tft.print( text );
 } // displayCenter()
 
-// *******************************************************
-// *********** WiFi Manager Functions ********************
-// *******************************************************
-void openSPIFFS() {
-  // SPIFFS = Serial Peripheral Inteface Flash File System
-  // http://esp8266.github.io/Arduino/versions/2.0.0/doc/filesystem.html
-  // from wifiManager example AutoConnectWithFSParameters
-  // https://github.com/tzapu/WiFiManager/tree/master/examples/AutoConnectWithFSParameters
-  if ( SPIFFS.begin() ) {
-    Serial.println("Mount file system");
-    if (SPIFFS.exists("/config.json")) {
-      // file exists - read and copy to globals
-      Serial.println("Read config file");
-      File configFile = SPIFFS.open("/config.json", "r");
-      if ( configFile ) {
-        Serial.println("Opened config file");
-        size_t size = configFile.size();
-        // Allocate a buffer to store contents of the file.
-        std::unique_ptr<char[]> buf(new char[size]);
-
-        configFile.readBytes(buf.get(), size);
-        DynamicJsonBuffer jsonBuffer;
-        JsonObject& json = jsonBuffer.parseObject(buf.get());
-        json.printTo(Serial);
-        if ( json.success() ) {
-          Serial.println("\nParsed json");
-          // copy from json to global strings
-          strcpy(aprs_my_call, json["aprs_my_call"]);
-          strcpy(aprs_passcode, json["aprs_passcode"]);
-          strcpy(aprs_their_call, json["aprs_their_call"]);
-          strcpy(aprs_filter, json["aprs_filter"]);
-          strcpy(timezone, json["timezone"]);
-        } else {
-          Serial.println("Failed to load json config");
-        }
-      }
-    }
-  } else {
-    Serial.println("Failed to mount FS");
-  }
-  //end read
-  Serial.println("Finished spiffs read");
-} // openSPIFFS()
-
-void configModeCallback (WiFiManager * myWiFiManager) {
-  Serial.println("Entered config mode");
-  Serial.println(WiFi.softAPIP());
-  displayInstructionScreen();  // shows a reminder on the TFT display
-  flasher.attach(0.1, flashLED);  // rapid flash
-} // configModeCallback()
-
-// callback when there is need to save config
-void saveConfigCallback () {
-  Serial.println("Config save needed");
-  shouldSaveConfig = true;
-} // saveConfigCallback()
-
-// saves user parameters in SPIFFS
-void saveConfig() {
-  Serial.println("Saving config");
-  DynamicJsonBuffer jsonBuffer;
-  JsonObject& json = jsonBuffer.createObject();
-  // copy globals to json
-  json["aprs_my_call"] = aprs_my_call;
-  json["aprs_passcode"] = aprs_passcode;
-  json["aprs_their_call"] = aprs_their_call;
-  json["aprs_filter"] = aprs_filter;
-  json["timezone"] = timezone;
-
-  File configFile = SPIFFS.open("/config.json", "w");
-  if (!configFile) {
-    Serial.println("Failed to open config file for writing");
-  }
-  json.printTo(Serial);
-  json.printTo(configFile);
-  configFile.close();
-  //end save
-} // saveConfig()
 
 void flashLED() {
   // turns LED on if off and off if on
