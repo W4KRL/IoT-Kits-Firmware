@@ -1,10 +1,11 @@
-/* D1M-WX1_IoT-APRS_FranklinV44devel.ino
+/* D1M-WX1_APRS_REST.ino
 
    D1 Mini Weather Station (Solar)
-   Posts to ThingSpeak & APRS-IS
+   Posts to ThingSpeak using the REST API and APRS-IS
 
    Set serial monitor to 115,200 baud
 
+   01/23/2019 - Initial GitHub commit
    01/14/2019 - Restored explicit code to PostToThingspeak()
    12/15/2018 - Changed #includes to local path
    09/23/2018 - Release 4.2, APRS 3.0
