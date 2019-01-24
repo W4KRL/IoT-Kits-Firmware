@@ -75,11 +75,8 @@
 #include "src/BH1750/BH1750.h"       // https://github.com/claws/BH1750
 
 // Place your configuration files in same folder as this sketch
-//#include "ThingSpeak_config.h"
-//#include "APRS_config.h"
-
-#include "TS_W4KRL13.h"
-#include "APRS_W4KRL13.h"
+#include "ThingSpeak_config.h"
+#include "APRS_config.h"
 
 // *******************************************************
 // ********************** DEFAULTS ***********************
