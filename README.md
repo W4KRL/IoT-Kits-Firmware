@@ -11,8 +11,10 @@ There are three sketches for now. Two MQTT sketches are under development:
 This version posts weather data and telemetry to [ThingSpeak](http://www.thingspeak.com) using the REST API. Firmware that adds APRS connectivity is D1M-WX1_APRS_REST. 
 ## Installation
 Click on the **Clone or download** button and select Download ZIP. The file will download as IoT_Kits_Distribution-master.zip. Unzip the file. Copy each of the folders within IoT_Kits_Distribution-master to your Arduino folder.
-## Configuration of ThingSpeak.h
-Open the sketch in the Arduino IDE. Select the ThingSpeak.h tab and edit the information for your station as indicated by the comments within the file. 
+## Configuration of ThingSpeak_config.h
+All weather station sketches need a ThingSpeak_config.h file. It muts be located in the same folder as the sketch XXX.ino file.
+
+Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file. 
 
 Information needed:
 - Your WiFi SSID
@@ -26,5 +28,13 @@ Information needed:
 - - ADC reading
 
 Save the file.
-## Configuration of APRS.h
+## Configuration of APRS_config.h
+Only sketches using APRS need an APRS_config.h file.
 
+Information needed:
+- latitude (decimal degrees, positive for west, negative for east)
+- longitude (decimal degrees, positive for west, negative for east)
+- callsign and SSID
+- APRS passcode
+
+Save the file.
