@@ -12,6 +12,19 @@ This version posts weather data and telemetry to [ThingSpeak](http://www.thingsp
 ## Installation
 Click on the **Clone or download** button and select Download ZIP. The file will download as IoT_Kits_Distribution-master.zip. Unzip the file. Copy each of the folders within IoT_Kits_Distribution-master to your Arduino folder.
 ## Configuration of ThingSpeak.h
-Open the sketch in the Arduino IDE. Select the ThingSpeak.h tab and edit the information for your station as indicated by the comments within the file. Save the file.
+Open the sketch in the Arduino IDE. Select the ThingSpeak.h tab and edit the information for your station as indicated by the comments within the file. 
+
+Information needed:
+- Your WiFi SSID
+- Your WiFi password
+- Station elevation in meters
+- Sleep interval in seconds: 60 for testing, 600 for normal service
+- ThingSpeak channel ID (a numerical value)
+- ThingSpeak API Write Key (alphanumeric between quotes)
+- OPTIONAL
+- - DMM voltage
+- - ADC reading
+
+Save the file.
 ## Configuration of APRS.h
 
