@@ -5,8 +5,8 @@ There are five sketches:
 - **D1M-WX1_Calibration** - Calibrates the analog-to-digital converter
 - **D1M-WX1_IoT_REST** - Posts data to ThingSpeak using the REST API
 - **D1M-WX1_APRS_REST** - Posts data to ThingSpeak using the REST and to APRS
-- **D1M-WX1_IoT_MQTT** - TO BE DEVELOPED Posts data to ThingSpeak using MQTT
-- **D1M-WX1_APRS_MQTT** - TO BE DEVELOPED Posts data to ThingSpeak using MQTT and to APRS
+- D1M-WX1_IoT_MQTT - TO BE DEVELOPED Posts data to ThingSpeak using MQTT
+- D1M-WX1_APRS_MQTT - TO BE DEVELOPED Posts data to ThingSpeak using MQTT and to APRS
 
 This version posts weather data and telemetry to [ThingSpeak](http://www.thingspeak.com) using the REST API. Firmware that adds APRS connectivity is D1M-WX1_APRS_REST. 
 ## Installation
