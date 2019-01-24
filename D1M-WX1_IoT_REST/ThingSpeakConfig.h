@@ -1,7 +1,7 @@
-// config.h for D1M-WX1_IoT-APRS_Franklin42.ino
+// ThingSpeakConfig.h for D1M-WX1_IoT_REST.ino
 
 // This configuration file should reside in the same Arduino
-// directory as the weather station file D1M-WX1_IoT-APRS_Delta.ino.
+// directory as the weather station file D1M-WX1_IoT_REST.ino.
 
 // *******************************************************
 // ********************* WIFI LOGON **********************
@@ -43,21 +43,21 @@ const long SLEEP_INTERVAL = 600;
 
 // Open a ThingSpeak account at www.thingspeak.com
 /* Define fields:
- *  Field 1 Temperature Â°C
+ *  Field 1 Temperature °C
  *  Field 2 Humidity
  *  Field 3 Time Awake
  *  Field 4 Sea Level Pressure
  *  Field 5 Light Intensity
  *  Field 6 Cell Voltage
  *  Field 7 RSSI
- *  Field 8 Temperature Â°F
+ *  Field 8 Temperature °F
  *  Show Location checked
  *  Show Status checked
  */
 
 // ThingSpeak Channel ID & API Write Key
-const long CHANNEL_ID = your_channel_id;
-const char API_WRITE_KEY[] = "your_api_write_key";
+const long CHANNEL_ID = your_channel_id;            // numerical value
+const char API_WRITE_KEY[] = "your_api_write_key";  // between quotes
 
 // *******************************************************
 // ***** CHNAGE ONLY IF YOU KNOW WHAT YOU ARE DOING! *****
