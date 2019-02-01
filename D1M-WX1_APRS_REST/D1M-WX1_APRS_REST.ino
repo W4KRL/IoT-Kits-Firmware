@@ -81,9 +81,6 @@
 // ********************** DEFAULTS ***********************
 // *******************************************************
 // !!!!!!      DO NOT CHANGE THESE DEFAULTS         !!!!!!
-const char  IOT_SERVER[] = "api.thingspeak.com";         // ThingSpeak Server
-const long  MIN_RSSI = -80;                              // warning level for weak WiFi
-const float MIN_VCELL = 3.0;                             // warning level for low cell voltage
 const char  APRS_DEVICE_NAME[] = "https://w4krl.com/iot-kits/";
 const char  APRS_SOFTWARE_NAME[] = "D1M-WX1";            // unit ID
 const char  APRS_SOFTWARE_VERS[] = "2.5";                // firmware version
