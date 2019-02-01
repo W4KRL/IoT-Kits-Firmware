@@ -1,11 +1,11 @@
-# IoT_Kits_Distribution
+# IoT-Kits-Firmware
 This is a set of firmware sketches for the **IoT Kits©** solar-powered, wireless weather stations. They will work with either the single-board or stacked kits available from [https://W4KRL.com/IoT-Kits](https://w4krl.com/iot-kits/).
 
 There are four sketches for now. Two MQTT sketches are under development:
-- **D1M-WX1_Calibration** - Use this to verify your Arduino/ESP8266 software and to calibrate the analog-to-digital converter in the weather station
-- **D1M-WX1_IoT_REST** - Posts data to ThingSpeak Internet of Things (IoT) service using the REST API
-- **D1M-WX1_APRS_REST** - Posts data to APRS-IS and to ThingSpeak using REST
-- **D1M-Display-APRS_Manual** - Displays weather station data from your APRS-IS feed. Uses manual configuration rather than WiFiManager config.
+1. **D1M-WX1_Calibration** - Use this to verify your Arduino/ESP8266 software and to calibrate the analog-to-digital converter in the weather station
+2. **D1M-WX1_IoT_REST** - Posts data to ThingSpeak Internet of Things (IoT) service using the REST API
+3. **D1M-WX1_APRS_REST** - Posts data to APRS-IS and to ThingSpeak using REST
+4. **D1M-Display-APRS_Manual** - Displays weather station data from your APRS-IS feed. Uses manual configuration rather than WiFiManager config.
 - D1M-WX1_IoT_MQTT - *TO BE DEVELOPED* - Posts data to ThingSpeak using MQTT
 - D1M-WX1_APRS_MQTT - *TO BE DEVELOPED* - Posts data to APRS and to ThingSpeak using MQTT
 
@@ -26,8 +26,8 @@ Information needed:
 - ThingSpeak channel ID (a numerical value)
 - ThingSpeak API Write Key (alphanumeric between quotes)
 - OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
-- - DMM voltage
-- - ADC reading
+-- DMM voltage
+-- ADC reading
 
 Save the file.
 ## Configuration of APRS_config.h
