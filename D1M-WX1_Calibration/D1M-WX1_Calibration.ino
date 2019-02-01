@@ -1,12 +1,16 @@
 /*
   D1M-WX1_Calibration.ino
 
+  02/01/2019 - Moved to GitHub
+  01-31/2019 - ON 0.1 seconds, OFF 0.9 seconds
+
   23 September 2018 - shortened LED flash and off time
 
-  This program verifies the proper installation of the Arduino IDE 
+  This program is used with IoT Kits weather stations to calibrate the 
+  voltage sensor. It also verifies the proper installation of the Arduino IDE 
   and ESP8266 core. It does two things:
 
-  1) It blinks the onboard LED one second on and one second off
+  1) It blinks the onboard LED 0.1 seconds on and 0.9 seconds off
   2) It reports the voltage read by the analog to digital converter (ADC)
 
   The printed circuit switches must be in this position:
@@ -25,7 +29,7 @@
   Karl Berger
   2017.03.10
 
-  Copyright(c) 2018 Berger Engineering
+  Copyright(c) 2018-2019 Karl W. Berger dba IoT Kits
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +54,7 @@
 // Initialize serial communications and set the pinmode
 void setup() {
   Serial.begin(115200);             // initialize serial at 115,200 baud
-  // the builtin LED on the ESP8266 is connected to pin 2
+  // the builtin LED on the D1 Mini is connected to pin 2
   pinMode(LED_BUILTIN, OUTPUT);     // Set the LED pin to OUTPUT mode
 } // setup()
 
