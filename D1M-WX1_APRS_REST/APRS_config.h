@@ -1,6 +1,9 @@
 // *******************************************************
-// ******************** APRS-IS **************************
+// *************** APRS_config.h *************************
 // *******************************************************
+
+// This configuration file should reside in the same Arduino
+// directory as the weather station sketch.
 
 // Enter your station location in decimal degrees
 // For example: lat/lon for Washington Monument is 38.8908031, -77.0338225

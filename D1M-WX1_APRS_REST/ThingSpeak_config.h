@@ -1,14 +1,14 @@
 // ThingSpeak_config.h
 
 // This configuration file should reside in the same Arduino
-// directory as the weather station file D1M-WX1_IoT-APRS_FranklinV3.ino.
+// directory as the weather station sketch.
 
 // *******************************************************
-// ********************* WIFI LOGON **********************
+// ****************** WIFI LOGON *************************
 // *******************************************************
 
 // ENTER YOUR WI-FI SSID
-// YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz
+// !!!!!  YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz !!!!!
 const char WIFI_SSID[] = "your_wifi_ssid";
 
 // ENTER YOUR WI-FI PASSWORD
@@ -34,7 +34,7 @@ const float STATION_ELEV = 0.0;
 
 // update interval in seconds
 // must be longer than 15 seconds
-// suggest 60 seconds for testing, 300 or 600 for use
+// suggest 60 seconds for testing, 600 or 900 for use
 const long SLEEP_INTERVAL = 600;
 
 // *******************************************************
@@ -42,6 +42,7 @@ const long SLEEP_INTERVAL = 600;
 // *******************************************************
 
 // Open a ThingSpeak account at www.thingspeak.com
+// Configure your channel fields as follows:
 /* Define fields:
  *  Field 1 Temperature °C
  *  Field 2 Humidity
@@ -55,6 +56,7 @@ const long SLEEP_INTERVAL = 600;
  *  Show Status checked
  */
 
+// Enter your ThingSpeak channel information here
 // ThingSpeak Channel ID & API Write Key
 const long CHANNEL_ID = 00000;
 const String API_WRITE_KEY = "your_API_write_key";
