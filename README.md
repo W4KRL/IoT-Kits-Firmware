@@ -5,7 +5,7 @@ There are four sketches for now. Two MQTT sketches are under development:
 - **D1M-WX1_Calibration** - Calibrates the analog-to-digital converter
 - **D1M-WX1_IoT_REST** - Posts data to ThingSpeak using the REST API
 - **D1M-WX1_APRS_REST** - Posts data to ThingSpeak using the REST and to APRS
-- **D1M-Remote-APRS-Manual-Config** - 
+- **D1M-Remote_APRS_Manual_Config** - 
 - D1M-WX1_IoT_MQTT *TO BE DEVELOPED* - Posts data to ThingSpeak using MQTT
 - D1M-WX1_APRS_MQTT *TO BE DEVELOPED* - Posts data to ThingSpeak using MQTT and to APRS
 
