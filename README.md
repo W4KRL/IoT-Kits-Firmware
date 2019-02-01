@@ -12,7 +12,6 @@ There are four sketches for now. Two MQTT sketches are under development:
 ## Installation
 1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT_Kits_Distribution-master.zip**. 
 2. Unzip the file. Copy each of the folders within IoT_Kits_Distribution-master to your Arduino folder.
-3. Note 
 ## Configuration of ThingSpeak_config.h
 All weather station sketches need a ThingSpeak_config.h file. It must be located in the same folder as the sketch XXX.ino file.
 
@@ -26,8 +25,8 @@ Information needed:
 - ThingSpeak channel ID (a numerical value)
 - ThingSpeak API Write Key (alphanumeric between quotes)
 - OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
--- DMM voltage
--- ADC reading
+- - DMM voltage
+- - ADC reading
 
 Save the file.
 ## Configuration of APRS_config.h
@@ -36,7 +35,7 @@ Only sketches using APRS need an APRS_config.h file.
 Information needed:
 - latitude (decimal degrees, positive for north, negative for south)
 - longitude (decimal degrees, positive for east, negative for west)
-- - Find your location at https://www.distancesto.com/elevation.php
+- * Find your location at https://www.distancesto.com/elevation.php
 - CALLSIGN-SSID
 - APRS passcode
 
