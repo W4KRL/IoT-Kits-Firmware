@@ -1,4 +1,6 @@
-// ThingSpeak_config.h
+// *******************************************************
+// ************** ThingSpeak_config.h ********************
+// *******************************************************
 
 // This configuration file should reside in the same Arduino
 // directory as the weather station sketch.
@@ -58,5 +60,13 @@ const long SLEEP_INTERVAL = 600;
 
 // Enter your ThingSpeak channel information here
 // ThingSpeak Channel ID & API Write Key
-const long CHANNEL_ID = 00000;
-const String API_WRITE_KEY = "your_API_write_key";
+const long CHANNEL_ID = 00000; // numerical value
+const String API_WRITE_KEY = "your_API_write_key";  // between quotes
+
+// *******************************************************
+// ***** CHANGE ONLY IF YOU KNOW WHAT YOU ARE DOING! *****
+// *******************************************************
+
+const long  MIN_RSSI = -80;                       // warning level for weak WiFi
+const float MIN_VCELL = 3.0;                      // warning level for low cell voltage
+const char  IOT_SERVER[] = "api.thingspeak.com";  // ThingSpeak Server
