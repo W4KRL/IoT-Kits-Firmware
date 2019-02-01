@@ -1,4 +1,4 @@
-﻿/* D1M-WX1_IoT_REST.ino
+/* D1M-WX1_IoT_REST.ino
 
    D1 Mini Weather Station (Solar)
    Posts to ThingSpeak using the REST API
@@ -37,7 +37,7 @@
       Add wifiManager
 */
 /*_____________________________________________________________________________
-   Copyright 2016-2019 Berger Engineering dba IoT Kits©
+   Copyright 2016-2019 Berger Engineering dba IoT KitsÂ©
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -96,8 +96,8 @@ long startTime = millis();                 // record processor time when awakene
 struct {
   float stationPressure;         // station pressure (hPa) (mb)
   float seaLevelPressure;        // calculated SLP (hPa)
-  float celsius;                 // temperature (°C)
-  float fahrenheit;              // calculated temperature (°F)
+  float celsius;                 // temperature (Â°C)
+  float fahrenheit;              // calculated temperature (Â°F)
   float humidity;                // relative humidity (%)
   long  lightLevel;              // light intensity (lux)
   float cellVoltage;             // volts
@@ -217,7 +217,7 @@ void readSensors() {
 void printToSerialPort() {
   // '\t' is the C++ escape sequence for tab
   // header line
-  Serial.println("\n\t°C(°F)\t\tRH%\tSP mb\tSLP(in)\t\tLux\tVolt");
+  Serial.println("\n\tÂ°C(Â°F)\t\tRH%\tSP mb\tSLP(in)\t\tLux\tVolt");
   // data line
   Serial.print("Data\t");
   Serial.print(sensorData.celsius, 1);
@@ -459,7 +459,7 @@ void postToThingSpeak() {
 
 // *******************************************************
 // Calculate relative sea level pressure from absolute station pressure in hPa
-// temperature in °C, elevation in m
+// temperature in Â°C, elevation in m
 // http://www.sandhurstweather.org.uk/barometric.pdf
 // http://keisan.casio.com/exec/system/1224575267
 // *******************************************************
