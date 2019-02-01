@@ -18,6 +18,3 @@ const String APRScallsign = "your_call-13";
 // for passcode www.george-smart.co.uk/aprs/aprs_callpass/
 // or http://n5dux.com/ham/aprs-passcode/
 const char APRSpasscode[] = "your_passcode";
-
-// interval between transmissions of APRS telemetry definitions in seconds
-const int APRS_TELEM_SPAN = 2 * 60 * 60; // once per 2 hours

@@ -5,6 +5,7 @@
 
    Set serial monitor to 115,200 baud
 
+   02/01/2019 - Clean up comments
    01/23/2019 - Initial GitHub commit
    01/14/2019 - Restored explicit code to PostToThingspeak()
    12/15/2018 - Changed #includes to local path
@@ -25,8 +26,7 @@
               - removed blinkLED(), removed sensor averaging
    07/21/2018 - added time awake to APRS, changed TS field 3 to Time Awake
               - forced one_time mode for BH1750, checked initialization
-   07/20/2018 - trapped RSSI error code 31 and moved to logonToRouter()
-              - fixed APRS 100% humidity = 00
+   07/20/2018 - fixed APRS 100% humidity = 00
               - simplified APRS padding routines
    07/18/2018 - Modify Delta to use RTC memory for telemetry sequence number
               - Added https://www.bakke.online/index.php/2017/06/24/esp8266-wifi-power-reduction-avoiding-network-scan/
@@ -36,7 +36,7 @@
       Add wifiManager
 */
 /*_____________________________________________________________________________
-   Copyright 2016-2019 Berger Engineering dba IoT Kits©
+   Copyright 2016-2019 Berger Engineering dba IoT Kits(c) https://w4krl.com
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,6 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    SOFTWARE.
 
-   https://w4krl.com
    _____________________________________________________________________________
 */
 
@@ -71,8 +70,8 @@
 // to ensure a compatible set of libraries.
 // If you move this sketch to a new folder, you must manually copy the src folder to the
 // new sketch location.
-#include "src/BME280/BME280I2C.h"    // Tyler Glenn https://github.com/finitespace/BME280
-#include "src/BH1750/BH1750.h"       // https://github.com/claws/BH1750
+#include "src/BME280/BME280I2C.h"    // Tyler Glenn https://github.com/finitespace/BME280 v2.3.0
+#include "src/BH1750/BH1750.h"       // https://github.com/claws/BH1750 version November 4, 2018
 
 // Place your configuration files in same folder as this sketch
 #include "ThingSpeak_config.h"
@@ -93,8 +92,11 @@ const long  APRS_TIMEOUT = 2000;                         // milliseconds
 const char  APRS_PROJECT[] = "Solar Power WX Station";   // telemetry ID
 // for list of servers: http://www.aprs-is.net/aprsservers.aspx
 const char  APRS_SERVER[] = "rotate.aprs2.net";          // recommended since May 2018
-// set APRS telemetry span for number of seconds to xmit header
-int aprsTelemSpan = APRS_TELEM_SPAN / SLEEP_INTERVAL;    // once per 2 hours
+// interval between transmissions of APRS telemetry definitions in seconds
+const int APRS_TELEM_INTERVAL = 2 * 60 * 60;             // once per 2 hours
+// set APRS telemetry span for transmissions between telemetry definitions
+const int APRS_TELEM_SPAN = APRS_TELEM_INTERVAL / SLEEP_INTERVAL;
+
 
 // *******************************************************
 // *********************** GLOBALS ***********************
@@ -104,7 +106,7 @@ String unitStatus = "";                    // for weather station status
 bool rtcValid = false;                     // RTC check of validity
 long startTime = millis();                 // record processor time when awakened
 
-// structure to hold sensor measurements/calculations
+// structure to hold sensor measurements & calculations
 struct {
   float stationPressure;         // station pressure (hPa) (mb)
   float seaLevelPressure;        // calculated SLP (hPa)
@@ -250,10 +252,14 @@ void printToSerialPort() {
   Serial.println("----------------------------------------------------------------------------");
 } // printToSerialPort()
 
-
-// RTC Memory Functions: The ESP8266 internal Real Time Clock has unused memory
-// that remains active during the Deep Sleep mode. This sketch stores WiFi connection
+// *******************************************************
+// **************** RTC MEMORY FUNCTIONS *****************
+// *******************************************************
+// The ESP8266 internal Real Time Clock has unused memory that remains
+// active during the Deep Sleep mode. This sketch stores WiFi connection
 // information in RTC memory to speed up connection time.
+// https://www.bakke.online/index.php/2017/06/24/esp8266-wifi-power-reduction-avoiding-network-scan/
+
 // *******************************************************
 // ******************* Read RTC Memory *******************
 // *******************************************************
@@ -514,7 +520,6 @@ void postToThingSpeak() {
     dataString += "&field7=";
     dataString += String(sensorData.wifiRSSI);
     dataString += "&field8=";
-    //dataString += String( 1.8 * stationData.temperature + 32 ); // temp in F
     dataString += String(sensorData.fahrenheit);
     dataString += "&status=";
     dataString += unitStatus;
@@ -625,7 +630,7 @@ void APRSsendTelemetry() {
   Serial.println(dataString);               // print to serial port
 
   // send telemetry definitions every TELEM_SPAN cycles
-  if ( rtcData.aprsSequence % aprsTelemSpan == 0 ) {
+  if ( rtcData.aprsSequence % APRS_TELEM_SPAN == 0 ) {
     APRSsendTelemetryDefinitions(APRScallsign);
     String msg = "APRS telemetry definitions sent with sequence #";
     msg += rtcData.aprsSequence;
@@ -653,10 +658,10 @@ void APRSsendTelemetryDefinitions(String callsign) {
   dataString += ",BH17";            // B2 (1-5)
   dataString += ",loV";             // B3 (1-4)
   dataString += ",loS";             // B4 (1-4)
-  //dataString += ",pB5";           // B5 (1-4) spare
-  //dataString += ",pB6";           // B6 (1-3) spare
-  //dataString += ",pB7";           // B7 (1-3) spare
-  //dataString += ",pB8";           // B8 (1-3) spare
+  //  dataString += ",pB5";           // B5 (1-4) spare
+  //  dataString += ",pB6";           // B6 (1-3) spare
+  //  dataString += ",pB7";           // B7 (1-3) spare
+  //  dataString += ",pB8";           // B8 (1-3) spare
   client.println(dataString);       // send to APRS-IS
   Serial.print("Send: ");
   Serial.println(dataString);       // print to serial port
@@ -723,6 +728,7 @@ String APRSpadCall(String callSign) {
 // *************** Format location for APRS **************
 // *******************************************************
 String APRSlocation(float lat, float lon) {
+  // Credit Karl Berger, W4KRL if you use this function
   // NOTE: abs() and % DO NOT WORK WITH FLOATS!!!
   // use fmod() for float modulo
   // convert decimal latitude & longitude to DDmm.mmN/DDDmm.mmW
