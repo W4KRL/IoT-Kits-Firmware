@@ -47,8 +47,7 @@
 
 #include <WiFiUdp.h>                // needed for NTP
 
-#include "config.h"
-//#include "W4KRL15.h"
+#include "APRS_config.h"
 
 // *******************************************************
 // ******************* DEFAULTS **************************
@@ -366,15 +365,15 @@ void logonToAPRS() {
   if ( client.connect( APRS_SERVER, APRS_PORT ) == true ) {
     Serial.println( "APRS connected." );
     dataString += "user ";
-    dataString += aprsMyCall;         // from SPIFFS
+    dataString += APRS_MY_CALL;         // from SPIFFS
     dataString += " pass ";
-    dataString += aprs_passcode;      // from SPIFFS
+    dataString += APRS_PASSCODE;      // from SPIFFS
     dataString += " vers ";
     dataString += APRS_SOFTWARE_NAME; // softwarename
     dataString += " ";
     dataString += APRS_SOFTWARE_VERS; // softwarevers
     dataString += " filter ";
-    dataString += aprs_filter;
+    dataString += APRS_FILTER;
     client.println( dataString );     // send to APRS-IS
     Serial.println( dataString );     // print to serial monitor
 
@@ -383,7 +382,7 @@ void logonToAPRS() {
       tft.setTextSize(2);
       tft.setTextColor(GREEN);
       displayCenter( "APRS-IS",  screenW2, 30, 2 );
-      displayCenter( aprsMyCall, screenW2, 50, 2 );
+      displayCenter( APRS_MY_CALL, screenW2, 50, 2 );
       displayCenter( APRSserver, screenW2, 90, 2 );
     } else {
       Serial.println( "APRS Login failed." );
@@ -441,7 +440,7 @@ String APRSreceiveData() {
 // **************** SEND APRS ACK ************************
 // *******************************************************
 void APRSsendACK( String recipient, String msgID ) {
-  String dataString = aprsMyCall;
+  String dataString = APRS_MY_CALL;
   dataString += ">APRS,TCPIP*:";
   dataString += APRS_ID_MESSAGE;
   dataString += APRSpadCall(recipient); // pad to 9 characters
@@ -618,7 +617,7 @@ void aprsWXFrame( boolean firstRender ) {
     tft.setTextSize(2);
     tft.setTextColor( BLUE, YELLOW );
     displayCenter("Weather", screenW2, 3, 2);
-    displayCenter(aprsTheirCall, screenW2, 23, 2);
+    displayCenter(APRS_THEIR_CALL, screenW2, 23, 2);
   }
 
   if ( APRSdataWeather.indexOf( APRS_ID_WEATHER ) > 0 ) {
@@ -692,7 +691,7 @@ void aprsTelemetryFrame( boolean firstRender ) {
 
     tft.setTextColor(YELLOW, BLUE);
     displayCenter("Telemetry", screenW2, 3, 2);
-    displayCenter( aprsTheirCall, screenW2, 23, 2 );
+    displayCenter( APRS_THEIR_CALL, screenW2, 23, 2 );
   }
 
   index = APRSdataTelemetry.indexOf( "T#" );
@@ -821,12 +820,12 @@ void getRTCtime() {
   utc = now();
   TimeChangeRule *tcr;
   time_t t;
-  if (strcmp(timezone, "ET") == 0) t = usET.toLocal(utc, &tcr);
-  else if (strcmp(timezone, "CT") == 0) t = usCT.toLocal(utc, &tcr);
-  else if (strcmp(timezone, "MT") == 0) t = usMT.toLocal(utc, &tcr);
-  else if (strcmp(timezone, "PT") == 0) t = usPT.toLocal(utc, &tcr);
-  else if (strcmp(timezone, "AKT") == 0) t = usAKT.toLocal(utc, &tcr);
-  else if (strcmp(timezone, "HT") == 0) t = usHT.toLocal(utc, &tcr);
+  if (strcmp(TIME_ZONE, "ET") == 0) t = usET.toLocal(utc, &tcr);
+  else if (strcmp(TIME_ZONE, "CT") == 0) t = usCT.toLocal(utc, &tcr);
+  else if (strcmp(TIME_ZONE, "MT") == 0) t = usMT.toLocal(utc, &tcr);
+  else if (strcmp(TIME_ZONE, "PT") == 0) t = usPT.toLocal(utc, &tcr);
+  else if (strcmp(TIME_ZONE, "AKT") == 0) t = usAKT.toLocal(utc, &tcr);
+  else if (strcmp(TIME_ZONE, "HT") == 0) t = usHT.toLocal(utc, &tcr);
   else t = UTC.toLocal(utc, &tcr);    // unrecognized time zone - default to UTC
 
   strcpy(tzAbbrev, tcr -> abbrev);
