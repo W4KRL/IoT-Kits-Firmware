@@ -42,4 +42,3 @@ Information needed:
 
 Save the file.
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
