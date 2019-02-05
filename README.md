@@ -11,8 +11,8 @@ There are five active sketches. Two MQTT sketches are under development:
 - D1M-WX1_APRS_MQTT - *IN DEVELOPMENT* - Posts data to APRS and to ThingSpeak using MQTT
 
 ## Installation
-1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT_Kits_Distribution-master.zip**. 
-2. Unzip the file. Copy each of the folders within IoT_Kits_Distribution-master to your Arduino folder.
+1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT-Kits-Firmware-master.zip**. 
+2. Unzip the file. Copy each of the folders within IoT-Kits-Firmware-master to your Arduino folder.
 3. The sketches are provided with important library files in subfolders to ensure having a consistent software package. Comments within the sketches identify the library authors, version level, and source.
 ## Configuration of ThingSpeak_config.h
 All weather station sketches need a ThingSpeak_config.h file. It must be located in the same folder as the sketch XXX.ino file.
