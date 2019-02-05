@@ -471,7 +471,7 @@ void iotWXFrame( boolean firstRender ) {
 
   String dispTempF = String( iotData.tempF, 1 ) + " F ";
   String dispTempC = String( iotData.tempC , 1 ) + " C ";
-  String dispHumid = String( iotData.humidity, 0 ) + " % ";
+  String dispHumid = String( iotData.humidity, 1 ) + " % ";
   String dispPress = String( iotData.slp, 1 ) + " mb";
 
   tft.setTextColor(YELLOW, BLUE);
