@@ -1,6 +1,8 @@
 // D1S-Remote-Display.ino
 
-// 01/30/19 - Quick fix to replace WiFi Manager with a manual config.h file
+// 02/06/2019 - Moved to GitHub
+// 02/04/2019 - Cleanup for manual configuration
+// 01/30/2019 - Quick fix to replace WiFi Manager with a manual config.h file
 // uses 0.1 * Byte + 2.5 Vcell scaling
 // uses byte squared for lux
 
@@ -346,9 +348,9 @@ void splashScreen() {
   tft.setTextSize(2);
   tft.setTextColor(YELLOW);
   int topLine = 19;
-  displayCenter( "D1S-RCVR", screenW2, topLine,      2 );
-  displayCenter( "APRS-IS",  screenW2, topLine + 20, 2 );
-  displayCenter( "Receiver", screenW2, topLine + 40, 2 );
+  displayCenter( "D1S-APRS", screenW2, topLine,      2 );
+  displayCenter( "Remote",  screenW2, topLine + 20, 2 );
+  displayCenter( "Display", screenW2, topLine + 40, 2 );
   displayCenter( "IoT Kits", screenW2, topLine + 60, 2 );
   displayCenter( "by W4KRL", screenW2, topLine + 80, 2 );
   for (int i = 0; i < 4; i++) {
