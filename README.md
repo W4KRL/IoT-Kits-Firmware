@@ -27,8 +27,8 @@ Information needed:
 - ThingSpeak channel ID (a numerical value)
 - ThingSpeak API Write Key (alphanumeric between quotes)
 - OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
-- - DMM voltage
-- - ADC reading
+  - DMM voltage
+  - ADC reading
 
 Save the file.
 ## Configuration of APRS_config.h
@@ -41,5 +41,4 @@ Information needed:
 - CALLSIGN-SSID
 - APRS passcode
 
-Save the file.
-
+Save the sketch.
