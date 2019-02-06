@@ -38,8 +38,8 @@ Only sketches using APRS need an APRS_config.h file. You must have a valid amate
 
 Information needed:
 - Find your location at [www.distancesto.com/](https://www.distancesto.com/coordinates.php)
- - latitude (decimal degrees, positive for north, negative for south)
- - longitude (decimal degrees, positive for east, negative for west)
+  - latitude (decimal degrees, positive for north, negative for south)
+  - longitude (decimal degrees, positive for east, negative for west)
 - CALLSIGN-SSID
 - APRS passcode
 
