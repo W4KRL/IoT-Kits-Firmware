@@ -14,13 +14,14 @@ There are five active sketches. Two MQTT sketches are under development:
 1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT-Kits-Firmware-master.zip**. 
 2. Unzip the file. Copy each of the folders within IoT-Kits-Firmware-master to your Arduino folder.
 3. The sketches are provided with important library files in subfolders to ensure having a consistent software package. Comments within the sketches identify the library authors, version level, and source.
+
 ## Configuration of ThingSpeak_config.h
 All weather station sketches need a ThingSpeak_config.h file. It must be located in the same folder as the sketch XXX.ino file.
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file. 
 
 Information needed:
-- Your WiFi SSID
+- Your WiFi SSID (You must use 2.4 GHz not 5 GHz.)
 - Your WiFi password
 - Station elevation in meters. You can get this at [www.freemaptools.com](https://www.freemaptools.com/elevation-finder.htm)
 - Sleep interval in seconds: 60 for testing, 600 for normal service
@@ -30,14 +31,15 @@ Information needed:
   - DMM voltage
   - ADC reading
 
-Save the file.
+Save the sketch.
+
 ## Configuration of APRS_config.h
 Only sketches using APRS need an APRS_config.h file. You must have a valid amateur radio license to use APRS.
 
 Information needed:
-- latitude (decimal degrees, positive for north, negative for south)
-- longitude (decimal degrees, positive for east, negative for west)
-- * Find your location at [www.distancesto.com/](https://www.distancesto.com/coordinates.php)
+- Find your location at [www.distancesto.com/](https://www.distancesto.com/coordinates.php)
+ - latitude (decimal degrees, positive for north, negative for south)
+ - longitude (decimal degrees, positive for east, negative for west)
 - CALLSIGN-SSID
 - APRS passcode
 
