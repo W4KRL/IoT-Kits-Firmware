@@ -311,7 +311,7 @@ void splashScreen() {
   tft.setTextSize(2);
   tft.setTextColor(YELLOW);
   int topLine = 19;
-  displayCenter( "D1S-IOT", screenW2, topLine,      2 );
+  displayCenter( "D1S-IoT", screenW2, topLine,      2 );
   displayCenter( "Remote",  screenW2, topLine + 20, 2 );
   displayCenter( "Display", screenW2, topLine + 40, 2 );
   displayCenter( "IoT Kits", screenW2, topLine + 60, 2 );
