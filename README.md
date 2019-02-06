@@ -32,7 +32,7 @@ Information needed:
 
 Save the file.
 ## Configuration of APRS_config.h
-Only sketches using APRS need an APRS_config.h file.
+Only sketches using APRS need an APRS_config.h file. You must have a valid amateur radio license to use APRS.
 
 Information needed:
 - latitude (decimal degrees, positive for north, negative for south)
