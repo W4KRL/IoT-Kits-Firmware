@@ -3,8 +3,8 @@ This is a set of firmware sketches for the **IoT Kits©** solar-powered, wireles
 
 There are five active sketches:
 1. **D1M-WX1-Calibration** - Use this to verify that you have installed the ESP8266 core in the Arduino IDE. It can also calibrate the analog-to-digital converter in the weather station.
-2. **D1M-WX1_IoT_REST** - Posts data to ThingSpeak Internet of Things (IoT) service using the REST API.
-3. **D1M-WX1_APRS_REST** - Posts data to APRS-IS and to ThingSpeak using REST [**NOTE:** For licensed amateur radio operators only.]
+2. **D1M-WX1-IoT-REST** - Posts data to ThingSpeak Internet of Things (IoT) service using the REST API.
+3. **D1M-WX1-APRS-REST** - Posts data to APRS-IS and to ThingSpeak using REST [**NOTE:** For licensed amateur radio operators only.]
 4. **D1S-Display-APRS-manual-config** - Displays weather station data from your APRS-IS feed. Uses manual configuration rather than WiFiManager config.
 5. **D1S-Display-IoT-manual-config** - This is a preview release. It is working and safe to use but some planned features are not yet implemented. It displays weather station data from your ThingSpeak channel and uses manual configuration rather than WiFiManager config.
 
