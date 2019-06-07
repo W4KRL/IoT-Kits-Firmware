@@ -30,7 +30,7 @@ Information needed:
   - DMM voltage
   - ADC reading
 
-Save the sketch.
+Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return the switch to RUN after a sucessful upload.
 
 ## Configuration of APRS_config.h
 Only sketches using APRS need an APRS_config.h file. You must have a valid amateur radio license to use APRS.
@@ -43,4 +43,4 @@ Information needed:
 - APRS passcode
 - For the remote display kits, you must select the appropriate timezone by uncommenting your location.
 
-Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return teh switch to RUN after a sucessful upload.
+Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return the switch to RUN after a sucessful upload.
