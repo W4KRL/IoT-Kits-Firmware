@@ -20,7 +20,7 @@ All weather station sketches need a ThingSpeak_config.h file. It must be located
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h or appropriet tab and edit the information for your station as indicated by the comments within the file. 
 
-###Information needed:
+### Information needed:
 - Your WiFi SSID **(You must use 2.4 GHz not 5 GHz.)**
 - Your WiFi password
 - Station elevation in meters. You can get this at [www.freemaptools.com](https://www.freemaptools.com/elevation-finder.htm)
@@ -37,7 +37,7 @@ Save the sketch. Set the **PROG/RUN** switch to PROG and upload to the microcont
 ## Configuration of APRS_config.h
 Only sketches using APRS need an APRS_config.h file. You must have a valid amateur radio license to use APRS.
 
-###Information needed:
+### Information needed:
 - Find your location at [www.distancesto.com/](https://www.distancesto.com/coordinates.php)
   - latitude (decimal degrees, positive for north, negative for south)
   - longitude (decimal degrees, positive for east, negative for west)
