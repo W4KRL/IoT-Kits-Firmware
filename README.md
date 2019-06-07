@@ -25,6 +25,7 @@ Information needed:
 - Sleep interval in seconds: 60 for testing, 600 or longer for normal service
 - ThingSpeak channel ID (a numerical value)
 - ThingSpeak API Write Key (alphanumeric between quotes)
+- For the remote display kits, you must select the appropriate timezone by uncommenting your location.
 - OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
   - DMM voltage
   - ADC reading
@@ -40,5 +41,6 @@ Information needed:
   - longitude (decimal degrees, positive for east, negative for west)
 - CALLSIGN-SSID
 - APRS passcode
+- For the remote display kits, you must select the appropriate timezone by uncommenting your location.
 
-Save the sketch.
+Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return teh switch to RUN after a sucessful upload.
