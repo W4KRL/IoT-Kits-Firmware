@@ -8,6 +8,8 @@ There are five active sketches:
 4. **D1S-Display-APRS-manual-config** - Displays weather station data from your APRS-IS feed. Uses manual configuration rather than WiFiManager config.
 5. **D1S-Display-IoT-manual-config** - This displays weather station data from your ThingSpeak channel and uses manual configuration rather than WiFiManager config.
 
+**NOTE:** *The remote displays originally used a captive web page to configure the kit. A recent change to one of the third-party libraries broke that capability. The comptibility issue has been resolved and new firmware is in design to restore the feature.*
+
 ## Installation
 1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT-Kits-Firmware-master.zip**. 
 2. Unzip the file. Copy each of the folders within IoT-Kits-Firmware-master to your Arduino folder.
@@ -18,7 +20,7 @@ All weather station sketches need a ThingSpeak_config.h file. It must be located
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h or appropriet tab and edit the information for your station as indicated by the comments within the file. 
 
-Information needed:
+###Information needed:
 - Your WiFi SSID **(You must use 2.4 GHz not 5 GHz.)**
 - Your WiFi password
 - Station elevation in meters. You can get this at [www.freemaptools.com](https://www.freemaptools.com/elevation-finder.htm)
@@ -30,12 +32,12 @@ Information needed:
   - DMM voltage
   - ADC reading
 
-Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return the switch to RUN after a sucessful upload.
+Save the sketch. Set the **PROG/RUN** switch to PROG and upload to the microcontroller. **Return the switch to RUN after a sucessful upload.**
 
 ## Configuration of APRS_config.h
 Only sketches using APRS need an APRS_config.h file. You must have a valid amateur radio license to use APRS.
 
-Information needed:
+###Information needed:
 - Find your location at [www.distancesto.com/](https://www.distancesto.com/coordinates.php)
   - latitude (decimal degrees, positive for north, negative for south)
   - longitude (decimal degrees, positive for east, negative for west)
@@ -43,4 +45,4 @@ Information needed:
 - APRS passcode
 - For the remote display kits, you must select the appropriate timezone by uncommenting your location.
 
-Save the sketch. Set the PROG/RUN switch to PROG and upload to the microcontroller. Return the switch to RUN after a sucessful upload.
+Save the sketch. Set the **PROG/RUN** switch to PROG and upload to the microcontroller. **Return the switch to RUN after a sucessful upload.**
