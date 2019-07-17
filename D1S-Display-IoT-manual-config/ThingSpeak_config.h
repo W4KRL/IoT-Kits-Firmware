@@ -34,7 +34,7 @@ const char WIFI_PASSWORD[] = "0F1A2D3E4D5G6L7O8R9Y"; // "your_wifi_password";
     Show Status checked
 */
 
-// ThingSpeak Channel ID & API Write Key
+// ThingSpeak Channel ID & API Read Key
 const unsigned long CHANNEL_ID = 286120;
 const String API_READ_KEY = "25PKMG5G3YS7QJDT";    // between quotes
 
