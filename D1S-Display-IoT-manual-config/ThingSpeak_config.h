@@ -11,10 +11,10 @@
 
 // ENTER YOUR WI-FI SSID
 // YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz
-const char WIFI_SSID[] = "DCMNET"; // "your_wifi_ssid";
+const char WIFI_SSID[] = ""; // "your_wifi_ssid";
 
 // ENTER YOUR WI-FI PASSWORD
-const char WIFI_PASSWORD[] = "0F1A2D3E4D5G6L7O8R9Y"; // "your_wifi_password";
+const char WIFI_PASSWORD[] = ""; // "your_wifi_password";
 
 // *******************************************************
 // ****************** THINGSPEAK *************************
@@ -35,8 +35,8 @@ const char WIFI_PASSWORD[] = "0F1A2D3E4D5G6L7O8R9Y"; // "your_wifi_password";
 */
 
 // ThingSpeak Channel ID & API Read Key
-const unsigned long CHANNEL_ID = 286120;
-const String API_READ_KEY = "25PKMG5G3YS7QJDT";    // between quotes
+const unsigned long CHANNEL_ID = ; // enter channel number
+const String API_READ_KEY = "";    // enter read key between quotes
 
 const long FRAME_INTERVAL = 5;                     // seconds to display frame
 
