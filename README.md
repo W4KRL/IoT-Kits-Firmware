@@ -12,7 +12,7 @@ There are five active sketches:
 
 ## Installation
 1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT-Kits-Firmware-master.zip**. 
-2. Unzip the file. Change the name of the extracted folder to **IoT-Kits** Copy this to your Arduino sketchbook folder. If you need to find your sketchbook folder, open the Arduino IDE and use menu File | Preferences. The first line tell you where the sketchbook resides on your computer. 
+2. Unzip the file. Change the name of the extracted folder to **IoT-Kits**. Copy this to your Arduino sketchbook folder. If you need to find your sketchbook folder, open the Arduino IDE and use menu File | Preferences. The first line tells you where the sketchbook resides on your computer. 
 3. The sketches are provided with important library files in subfolders to ensure having a consistent software package. Comments within the sketches identify the library authors, version levels, and sources.
 
 ## Configuration of ThingSpeak_config.h
