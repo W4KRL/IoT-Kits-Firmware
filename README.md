@@ -8,7 +8,7 @@ There are five active sketches:
 4. **D1S-Display-APRS-manual-config** - Displays weather station data from your APRS-IS feed. Uses manual configuration rather than WiFiManager captive page configuration.
 5. **D1S-Display-IoT-manual-config** - This displays weather station data from your ThingSpeak channel and uses manual configuration rather than WiFiManager captive page configuration.
 
-**NOTE:** *The remote displays originally used a captive web page to configure the kit. A recent change to one of the third-party libraries broke that capability. The compatibility issue has been resolved and new firmware is in design to restore the feature.*
+**NOTE:** *As of July 2021 some versions of the ESP8266 Core are deffective. Use version 2.7.4. Use Arduino IDE Tools | Boards | Board Manager... and search for ESP8266. Select version 2.7.4 to install.*
 
 ## Installation
 1. Click on the **Clone or download** button and select Download ZIP. The file will download as **IoT-Kits-Firmware-master.zip**. 
